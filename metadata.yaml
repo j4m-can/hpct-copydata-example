@@ -1,0 +1,21 @@
+# Copyright 2022 Canonical Ltd.
+# See LICENSE file for licensing details.
+
+# For a complete list of supported options, see:
+# https://juju.is/docs/sdk/metadata-reference
+
+name: copy-data-example
+display-name: |
+  copy-data
+description: |
+  Example showing copying relation data between buckets using hpctlib interfaces.
+summary: |
+  Copy relation data using hpctlib interfaces.
+
+provides:
+  feed:
+    interface: copy-data
+
+requires:
+  sink:
+    interface: copy-data

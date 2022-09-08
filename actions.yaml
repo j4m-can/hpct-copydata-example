@@ -1,0 +1,94 @@
+# Copyright 2022 John
+# See LICENSE file for licensing details.
+#
+# TEMPLATE-TODO: change this example to suit your needs.
+# If you don't need actions, you can remove the file entirely.
+# It ties in to the example _on_fortune_action handler in src/charm.py
+#
+# Learn more about actions at: https://juju.is/docs/sdk/actions
+
+configure-app:
+  description: Configure app settings.
+  params:
+    bool:
+      description: Boolean setting.
+      type: boolean
+    int:
+      description: Boolean setting.
+      type: integer
+    float:
+      description: Float setting.
+      type: string
+    privport:
+      description: Privileged port number setting.
+      type: integer
+    ipaddr:
+      description: IP address setting.
+      type: string
+    ipnet:
+      description: IP network setting.
+      type: string
+
+configure-unit:
+  description: Configure unit settings.
+  params:
+    bool:
+      description: Boolean setting.
+      type: boolean
+    int:
+      description: Boolean setting.
+      type: integer
+    float:
+      description: Float setting.
+      type: string
+    privport:
+      description: Privileged port number setting.
+      type: integer
+    ipaddr:
+      description: IP address setting.
+      type: string
+    ipnet:
+      description: IP network setting.
+      type: string
+
+# supported by ServiceCharm
+restart:
+  description: Restart services.
+  params:
+    force:
+      description: Force action.
+      type: boolean
+      default: false
+    sync:
+      description: Sync configuration.
+      type: boolean
+      default: false
+
+set-sync-status:
+  description: Set sync status (debugging).
+  params:
+    key:
+      description: Sync key.
+      type: string
+    value:
+      description: Sync status.
+      type: boolean
+
+start:
+  description: Start services.
+
+stop:
+  description: Stop services.
+  params:
+    force:
+      description: Force action.
+      type: boolean
+      default: false
+
+sync:
+  description: Sync configuration.
+  params:
+    force:
+      description: Force action.
+      type: boolean
+      default: false
