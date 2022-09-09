@@ -18,125 +18,17 @@ from ops.framework import StoredState
 from ops.main import main
 from ops.model import ActiveStatus, WaitingStatus
 
-from hpctlib.interface import codec, checker
+# load interfaces to registry
+if 1:
+    import interfaces
+else:
+    import interfacesold
+
 from hpctlib.interface import interface_registry
-from hpctlib.interface.base import Value
-from hpctlib.interface.relation import (
-    AppBucketInterface,
-    RelationSuperInterface,
-    UnitBucketInterface,
-)
-from hpctlib.interface import value
 from hpctlib.ops.charm.service import ServiceCharm
 
 
 logger = logging.getLogger(__name__)
-
-
-class CopyDataRelationSuperInterface(RelationSuperInterface):
-
-    """Relation super interface."""
-
-    class ProviderAppInterface(AppBucketInterface):
-
-        _bool = Value(codec.Boolean(), False)
-        _int = Value(codec.Integer(), 0)
-        _float = Value(codec.Float(), 0.0)
-        _str = Value(codec.String(), "")
-        _privport = Value(codec.Integer(), 0, checker.PrivilegedPort())
-        _ipaddr = Value(codec.IPAddress(), ipaddress.IPv4Address("0.0.0.0"))
-        _ipnet = Value(codec.IPNetwork(), ipaddress.IPv4Network("0.0.0.0"))
-
-    class ProviderUnitInterface(UnitBucketInterface):
-
-        _bool = Value(codec.Boolean(), False)
-        _int = Value(codec.Integer(), 0)
-        _float = Value(codec.Float(), 0.0)
-        _str = Value(codec.String())
-        _privport = Value(codec.Integer(), 0, checker.PrivilegedPort())
-        _ipaddr = Value(codec.IPAddress(), ipaddress.IPv4Address("0.0.0.0"))
-        _ipnet = Value(codec.IPNetwork(), ipaddress.IPv4Network("0.0.0.0"))
-
-    class RequirerAppInterface(AppBucketInterface):
-
-        _bool = Value(codec.Boolean(), False)
-        _int = Value(codec.Integer(), 0)
-        _float = Value(codec.Float(), 0.0)
-        _str = Value(codec.String(), "")
-        _privport = Value(codec.Integer(), 0, checker.PrivilegedPort())
-        _ipaddr = Value(codec.IPAddress(), ipaddress.IPv4Address("0.0.0.0"))
-        _ipnet = Value(codec.IPNetwork(), ipaddress.IPv4Network("0.0.0.0"))
-
-    class RequirerUnitInterface(UnitBucketInterface):
-
-        _bool = Value(codec.Boolean(), False)
-        _int = Value(codec.Integer(), 0)
-        _float = Value(codec.Float(), 0.0)
-        _str = Value(codec.String())
-        _privport = Value(codec.Integer(), 0, checker.PrivilegedPort())
-        _ipaddr = Value(codec.IPAddress(), ipaddress.IPv4Address("0.0.0.0"))
-        _ipnet = Value(codec.IPNetwork(), ipaddress.IPv4Network("0.0.0.0"))
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-        self.interface_classes[("provider", "app")] = self.ProviderAppInterface
-        self.interface_classes[("provider", "unit")] = self.ProviderUnitInterface
-        self.interface_classes[("requirer", "app")] = self.RequirerAppInterface
-        self.interface_classes[("requirer", "unit")] = self.RequirerUnitInterface
-
-
-class CopyDataRelationSuperInterface(RelationSuperInterface):
-
-    """Relation super interface."""
-
-    class ProviderAppInterface(AppBucketInterface):
-
-        _bool = value.Boolean(False)
-        _int = value.Integer(0)
-        _float = value.Float(0.0)
-        _str = value.String("")
-        _privport = value.Integer(0, checker.PrivilegedPort())
-        _ipaddr = value.IPAddress(ipaddress.IPv4Address("0.0.0.0"))
-        _ipnet = value.IPNetwork(ipaddress.IPv4Network("0.0.0.0"))
-
-    class ProviderUnitInterface(UnitBucketInterface):
-
-        _bool = value.Boolean(False)
-        _int = value.Integer(0)
-        _float = value.Float(0.0)
-        _str = value.String("")
-        _privport = value.Integer(0, checker.PrivilegedPort())
-        _ipaddr = value.IPAddress(ipaddress.IPv4Address("0.0.0.0"))
-        _ipnet = value.IPNetwork(ipaddress.IPv4Network("0.0.0.0"))
-
-    class RequirerAppInterface(AppBucketInterface):
-
-        _bool = value.Boolean(False)
-        _int = value.Integer(0)
-        _float = value.Float(0.0)
-        _str = value.String("")
-        _privport = value.Integer(0, checker.PrivilegedPort())
-        _ipaddr = value.IPAddress(ipaddress.IPv4Address("0.0.0.0"))
-        _ipnet = value.IPNetwork(ipaddress.IPv4Network("0.0.0.0"))
-
-    class RequirerUnitInterface(UnitBucketInterface):
-
-        _bool = value.Boolean(False)
-        _int = value.Integer(0)
-        _float = value.Float(0.0)
-        _str = value.String("")
-        _privport = value.Integer(0, checker.PrivilegedPort())
-        _ipaddr = value.IPAddress(ipaddress.IPv4Address("0.0.0.0"))
-        _ipnet = value.IPNetwork(ipaddress.IPv4Network("0.0.0.0"))
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-        self.interface_classes[("provider", "app")] = self.ProviderAppInterface
-        self.interface_classes[("provider", "unit")] = self.ProviderUnitInterface
-        self.interface_classes[("requirer", "app")] = self.RequirerAppInterface
-        self.interface_classes[("requirer", "unit")] = self.RequirerUnitInterface
 
 
 class CopyDataCharm(ServiceCharm):
