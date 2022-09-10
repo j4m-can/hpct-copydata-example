@@ -30,43 +30,43 @@ class CopyDataRelationSuperInterface(RelationSuperInterface):
 
     class ProviderAppInterface(AppBucketInterface):
 
-        _bool = Value(codec.Boolean(), False)
-        _int = Value(codec.Integer(), 0)
-        _float = Value(codec.Float(), 0.0)
-        _str = Value(codec.String(), "")
-        _privport = Value(codec.Integer(), 0, checker.PrivilegedPort())
-        _ipaddr = Value(codec.IPAddress(), ipaddress.IPv4Address("0.0.0.0"))
-        _ipnet = Value(codec.IPNetwork(), ipaddress.IPv4Network("0.0.0.0"))
+        bool = Value(codec.Boolean(), False)
+        int = Value(codec.Integer(), 0)
+        float = Value(codec.Float(), 0.0)
+        str = Value(codec.String(), "")
+        privport = Value(codec.Integer(), 0, checker.PrivilegedPort())
+        ipaddr = Value(codec.IPAddress(), ipaddress.IPv4Address("0.0.0.0"))
+        ipnet = Value(codec.IPNetwork(), ipaddress.IPv4Network("0.0.0.0"))
 
     class ProviderUnitInterface(UnitBucketInterface):
 
-        _bool = Value(codec.Boolean(), False)
-        _int = Value(codec.Integer(), 0)
-        _float = Value(codec.Float(), 0.0)
-        _str = Value(codec.String())
-        _privport = Value(codec.Integer(), 0, checker.PrivilegedPort())
-        _ipaddr = Value(codec.IPAddress(), ipaddress.IPv4Address("0.0.0.0"))
-        _ipnet = Value(codec.IPNetwork(), ipaddress.IPv4Network("0.0.0.0"))
+        bool = Value(codec.Boolean(), False)
+        int = Value(codec.Integer(), 0)
+        float = Value(codec.Float(), 0.0)
+        str = Value(codec.String(), "")
+        privport = Value(codec.Integer(), 0, checker.PrivilegedPort())
+        ipaddr = Value(codec.IPAddress(), ipaddress.IPv4Address("0.0.0.0"))
+        ipnet = Value(codec.IPNetwork(), ipaddress.IPv4Network("0.0.0.0"))
 
     class RequirerAppInterface(AppBucketInterface):
 
-        _bool = Value(codec.Boolean(), False)
-        _int = Value(codec.Integer(), 0)
-        _float = Value(codec.Float(), 0.0)
-        _str = Value(codec.String(), "")
-        _privport = Value(codec.Integer(), 0, checker.PrivilegedPort())
-        _ipaddr = Value(codec.IPAddress(), ipaddress.IPv4Address("0.0.0.0"))
-        _ipnet = Value(codec.IPNetwork(), ipaddress.IPv4Network("0.0.0.0"))
+        bool = Value(codec.Boolean(), False)
+        int = Value(codec.Integer(), 0)
+        float = Value(codec.Float(), 0.0)
+        str = Value(codec.String(), "")
+        privport = Value(codec.Integer(), 0, checker.PrivilegedPort())
+        ipaddr = Value(codec.IPAddress(), ipaddress.IPv4Address("0.0.0.0"))
+        ipnet = Value(codec.IPNetwork(), ipaddress.IPv4Network("0.0.0.0"))
 
     class RequirerUnitInterface(UnitBucketInterface):
 
-        _bool = Value(codec.Boolean(), False)
-        _int = Value(codec.Integer(), 0)
-        _float = Value(codec.Float(), 0.0)
-        _str = Value(codec.String())
-        _privport = Value(codec.Integer(), 0, checker.PrivilegedPort())
-        _ipaddr = Value(codec.IPAddress(), ipaddress.IPv4Address("0.0.0.0"))
-        _ipnet = Value(codec.IPNetwork(), ipaddress.IPv4Network("0.0.0.0"))
+        bool = Value(codec.Boolean(), False)
+        int = Value(codec.Integer(), 0)
+        float = Value(codec.Float(), 0.0)
+        str = Value(codec.String(), "")
+        privport = Value(codec.Integer(), 0, checker.PrivilegedPort())
+        ipaddr = Value(codec.IPAddress(), ipaddress.IPv4Address("0.0.0.0"))
+        ipnet = Value(codec.IPNetwork(), ipaddress.IPv4Network("0.0.0.0"))
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

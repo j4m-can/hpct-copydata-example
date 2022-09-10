@@ -29,43 +29,43 @@ class CopyDataRelationSuperInterface(RelationSuperInterface):
 
     class ProviderAppInterface(AppBucketInterface):
 
-        _bool = Boolean(False)
-        _int = Integer(0)
-        _float = Float(0.0)
-        _str = String("")
-        _privport = Integer(0, checker.PrivilegedPort())
-        _ipaddr = IPAddress(ipaddress.IPv4Address("0.0.0.0"))
-        _ipnet = IPNetwork(ipaddress.IPv4Network("0.0.0.0"))
+        bool = Boolean(False)
+        int = Integer(0)
+        float = Float(0.0)
+        str = String("")
+        privport = Integer(0, checker.PrivilegedPort())
+        ipaddr = IPAddress(ipaddress.IPv4Address("0.0.0.0"))
+        ipnet = IPNetwork(ipaddress.IPv4Network("0.0.0.0"))
 
     class ProviderUnitInterface(UnitBucketInterface):
 
-        _bool = Boolean(False)
-        _int = Integer(0)
-        _float = Float(0.0)
-        _str = String("")
-        _privport = Integer(0, checker.PrivilegedPort())
-        _ipaddr = IPAddress(ipaddress.IPv4Address("0.0.0.0"))
-        _ipnet = IPNetwork(ipaddress.IPv4Network("0.0.0.0"))
+        bool = Boolean(False)
+        int = Integer(0)
+        float = Float(0.0)
+        str = String("")
+        privport = Integer(0, checker.PrivilegedPort())
+        ipaddr = IPAddress(ipaddress.IPv4Address("0.0.0.0"))
+        ipnet = IPNetwork(ipaddress.IPv4Network("0.0.0.0"))
 
     class RequirerAppInterface(AppBucketInterface):
 
-        _bool = Boolean(False)
-        _int = Integer(0)
-        _float = Float(0.0)
-        _str = String("")
-        _privport = Integer(0, checker.PrivilegedPort())
-        _ipaddr = IPAddress(ipaddress.IPv4Address("0.0.0.0"))
-        _ipnet = IPNetwork(ipaddress.IPv4Network("0.0.0.0"))
+        bool = Boolean(False)
+        int = Integer(0)
+        float = Float(0.0)
+        str = String("")
+        privport = Integer(0, checker.PrivilegedPort())
+        ipaddr = IPAddress(ipaddress.IPv4Address("0.0.0.0"))
+        ipnet = IPNetwork(ipaddress.IPv4Network("0.0.0.0"))
 
     class RequirerUnitInterface(UnitBucketInterface):
 
-        _bool = Boolean(False)
-        _int = Integer(0)
-        _float = Float(0.0)
-        _str = String("")
-        _privport = Integer(0, checker.PrivilegedPort())
-        _ipaddr = IPAddress(ipaddress.IPv4Address("0.0.0.0"))
-        _ipnet = IPNetwork(ipaddress.IPv4Network("0.0.0.0"))
+        bool = Boolean(False)
+        int = Integer(0)
+        float = Float(0.0)
+        str = String("")
+        privport = Integer(0, checker.PrivilegedPort())
+        ipaddr = IPAddress(ipaddress.IPv4Address("0.0.0.0"))
+        ipnet = IPNetwork(ipaddress.IPv4Network("0.0.0.0"))
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

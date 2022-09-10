@@ -71,24 +71,24 @@ class CopyDataCharm(ServiceCharm):
                 appiface = self.siface.select(self.app)
                 rappiface = self.siface.select(event.app)
 
-                appiface._bool = rappiface._bool
-                appiface._int = rappiface._int
-                appiface._float = rappiface._float
-                appiface._privport = rappiface._privport
-                appiface._ipaddr = rappiface._ipaddr
-                appiface._ipnet = rappiface._ipnet
+                appiface.bool = rappiface.bool
+                appiface.int = rappiface.int
+                appiface.float = rappiface.float
+                appiface.privport = rappiface.privport
+                appiface.ipaddr = rappiface.ipaddr
+                appiface.ipnet = rappiface.ipnet
 
             else:
                 # unit update
                 unitiface = self.siface.select(self.unit)
                 runitiface = self.siface.select(event.unit)
 
-                unitiface._bool = runitiface._bool
-                unitiface._int = runitiface._int
-                unitiface._float = runitiface._float
-                unitiface._privport = runitiface._privport
-                unitiface._ipaddr = runitiface._ipaddr
-                unitiface._ipnet = runitiface._ipnet
+                unitiface.bool = runitiface.bool
+                unitiface.int = runitiface.int
+                unitiface.float = runitiface.float
+                unitiface.privport = runitiface.privport
+                unitiface.ipaddr = runitiface.ipaddr
+                unitiface.ipnet = runitiface.ipnet
         finally:
             self.service_set_updated("sink-relation-changed")
             self.service_update_status()
@@ -114,17 +114,17 @@ class CopyDataCharm(ServiceCharm):
             # yes, this could have been done with a loop and setattr, but is
             # intended to demonstrate interfaces
             if "bool" in event.params:
-                iface._bool = event.params["bool"]
+                iface.bool = event.params["bool"]
             if "int" in event.params:
-                iface._int = event.params["int"]
+                iface.int = event.params["int"]
             if "float" in event.params:
-                iface._float = float(event.params["float"])
+                iface.float = float(event.params["float"])
             if "privport" in event.params:
-                iface._privport = event.params["privport"]
+                iface.privport = event.params["privport"]
             if "ipaddr" in event.params:
-                iface._ipaddr = ipaddress.IPv4Address(event.params["ipaddr"])
+                iface.ipaddr = ipaddress.IPv4Address(event.params["ipaddr"])
             if "ipnet" in event.params:
-                iface._ipnet = ipaddress.IPv4Network(event.params["ipnet"])
+                iface.ipnet = ipaddress.IPv4Network(event.params["ipnet"])
 
         finally:
             self.service_set_updated("configure-action")
@@ -144,12 +144,12 @@ class CopyDataCharm(ServiceCharm):
         if self.unit.is_leader():
             # app info
             appmsg = (
-                f" _bool ({appiface._bool})"
-                f" _int ({appiface._int})"
-                f" _float ({appiface._float})"
-                f" _privport ({appiface._privport})"
-                f" _ipaddr ({appiface._ipaddr})"
-                f" _ipnet ({appiface._ipnet})"
+                f" bool ({appiface.bool})"
+                f" int ({appiface.int})"
+                f" float ({appiface.float})"
+                f" privport ({appiface.privport})"
+                f" ipaddr ({appiface.ipaddr})"
+                f" ipnet ({appiface.ipnet})"
                 f" :: "
             )
         else:
@@ -157,12 +157,12 @@ class CopyDataCharm(ServiceCharm):
 
         # self/unit info
         unitmsg = (
-            f" _bool ({selfiface._bool})"
-            f" _int ({selfiface._int})"
-            f" _float ({selfiface._float})"
-            f" _privport ({selfiface._privport})"
-            f" _ipaddr ({selfiface._ipaddr})"
-            f" _ipnet ({selfiface._ipnet})"
+            f" bool ({selfiface.bool})"
+            f" int ({selfiface.int})"
+            f" float ({selfiface.float})"
+            f" privport ({selfiface.privport})"
+            f" ipaddr ({selfiface.ipaddr})"
+            f" ipnet ({selfiface.ipnet})"
         )
 
         self.unit.status = ActiveStatus(f"{tuple(self.service_get_updated())} {appmsg}{unitmsg}")
