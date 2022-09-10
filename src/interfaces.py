@@ -20,9 +20,6 @@ from hpctlib.interface.relation import (
 from hpctlib.interface.value import Boolean, Integer, Float, String, IPAddress, IPNetwork
 
 
-logger = logging.getLogger(__name__)
-
-
 class CopyDataRelationSuperInterface(RelationSuperInterface):
 
     """Relation super interface."""

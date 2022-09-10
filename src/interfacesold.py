@@ -9,7 +9,6 @@
 
 
 import ipaddress
-import logging
 
 from hpctlib.interface import codec, checker
 from hpctlib.interface import interface_registry
@@ -19,9 +18,6 @@ from hpctlib.interface.relation import (
     RelationSuperInterface,
     UnitBucketInterface,
 )
-
-
-logger = logging.getLogger(__name__)
 
 
 class CopyDataRelationSuperInterface(RelationSuperInterface):
