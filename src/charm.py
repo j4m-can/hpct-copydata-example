@@ -144,6 +144,7 @@ class CopyDataCharm(ServiceCharm):
         if self.unit.is_leader():
             # app info
             appmsg = (
+                "APP"
                 f" bool ({appiface.bool})"
                 f" int ({appiface.int})"
                 f" float ({appiface.float})"
@@ -157,6 +158,7 @@ class CopyDataCharm(ServiceCharm):
 
         # self/unit info
         unitmsg = (
+            "UNIT"
             f" bool ({selfiface.bool})"
             f" int ({selfiface.int})"
             f" float ({selfiface.float})"
@@ -165,7 +167,9 @@ class CopyDataCharm(ServiceCharm):
             f" ipnet ({selfiface.ipnet})"
         )
 
-        self.unit.status = ActiveStatus(f"{tuple(self.service_get_updated())} {appmsg}{unitmsg}")
+        self.unit.status = ActiveStatus(
+            f"{tuple(self.service_get_updated())} :: {appmsg}{unitmsg}"
+        )
 
 
 if __name__ == "__main__":
