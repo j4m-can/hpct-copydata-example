@@ -169,6 +169,4 @@ class CopyDataCharm(ServiceCharm):
 
 
 if __name__ == "__main__":
-    interface_registry.register("relation-copy-data", CopyDataRelationSuperInterface)
-
     main(CopyDataCharm)
