@@ -52,7 +52,13 @@ configure-unit:
       type: string
 
 # supported by ServiceCharm
-restart:
+# Copyright 2022 Canonical Ltd.
+# See LICENSE file for licensing details.
+#
+# Learn more about actions at: https://juju.is/docs/sdk/actions
+
+# for ServiceCharm
+service-restart:
   description: Restart services.
   params:
     force:
@@ -64,7 +70,7 @@ restart:
       type: boolean
       default: false
 
-set-sync-status:
+service-set-sync-status:
   description: Set sync status (debugging).
   params:
     key:
@@ -74,10 +80,10 @@ set-sync-status:
       description: Sync status.
       type: boolean
 
-start:
+service-start:
   description: Start services.
 
-stop:
+service-stop:
   description: Stop services.
   params:
     force:
@@ -85,7 +91,7 @@ stop:
       type: boolean
       default: false
 
-sync:
+service-sync:
   description: Sync configuration.
   params:
     force:
