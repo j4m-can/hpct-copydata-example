@@ -2,7 +2,7 @@
 # Copyright 2022 Canonical Ltd.
 # See LICENSE file for licensing details.
 #
-# old-interfaces.py
+# interfaces/copydataold.py
 
 """Interfaces (old) for operator relations.
 """

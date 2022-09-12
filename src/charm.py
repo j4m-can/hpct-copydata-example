@@ -20,9 +20,9 @@ from ops.model import ActiveStatus, WaitingStatus
 
 # load interfaces to registry
 if 1:
-    import interfaces
+    import interfaces.copydata
 else:
-    import interfacesold
+    import interfaces.copydataold
 
 from hpctlib.interface import interface_registry
 from hpctlib.ops.charm.service import ServiceCharm

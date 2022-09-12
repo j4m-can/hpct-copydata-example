@@ -2,7 +2,7 @@
 # Copyright 2022 Canonical Ltd.
 # See LICENSE file for licensing details.
 #
-# interfaces.py
+# interfaces/copydata.py
 
 """Interfaces for operator relations.
 """
