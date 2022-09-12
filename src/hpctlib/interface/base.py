@@ -47,7 +47,8 @@ class Value:
         else:
             value = self.codec.decode(value)
 
-        if self.checker:
+        # only check for non-NoValue values
+        if value != NoValue and self.checker:
             self.checker.check(value)
 
         return value
@@ -107,6 +108,11 @@ class Interface:
         """Accessor for the interface store."""
 
         self._store[key] = value
+
+    def clear(self, key):
+        """Clear/delete key from storage."""
+
+        del self._store[key]
 
     def get_doc(self, show_values=False):
         """Return json object about interface."""

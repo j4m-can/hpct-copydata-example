@@ -9,7 +9,7 @@
 
 
 import logging
-from typing import Any
+from typing import Any, Union
 
 from . import codec
 from . import interface_registry
@@ -43,10 +43,11 @@ class BucketInterface(Interface):
 
     _basecls = Value
 
-    def __init__(self, charm, relname: str, bucketkey: str):
+    def __init__(self, charm, relname: str, bucketkey: str, relation_id: Union[int, None] = None):
         self._charm = charm
         self._relname = relname
         self._bucketkey = bucketkey
+        self._relation_id = relation_id
         self._mock = False
 
     def _get(self, key: str, default=None):
@@ -73,13 +74,22 @@ class BucketInterface(Interface):
         for relation in self.get_relations():
             relation.data[bucketkey].update({key: value})
 
-    def get_relation(self):
+    def clear(self, key):
+        """Clear/delete key from storage (bucket).
+
+        According to `RelationDataContent.__delitem__()`.
+        """
+
+        self._set(key, "")
+
+    def get_relation(self, relation_id=None):
         """Return relation associated with registered relation name."""
 
         if self._mock:
             return self._mock_relation
         else:
-            return self._charm.model.get_relation(self._relname)
+            relation_id = relation_id if relation_id != None else self._relation_id
+            return self._charm.model.get_relation(self._relname, relation_id)
 
     def get_relations(self):
         """Return relations associated with registered relation name."""
@@ -87,7 +97,11 @@ class BucketInterface(Interface):
         if self._mock:
             relations = [self._mock_relation]
         else:
-            relations = self._charm.model.relations.get(self._relname, [])
+            if self._relation_id != None:
+                relations = [self.get_relation()]
+            else:
+                relations = self._charm.model.relations.get(self._relname, [])
+
         return relations
 
     def get_leader_relations(self):
@@ -99,15 +113,16 @@ class BucketInterface(Interface):
             relations = [self._mock_relation]
         else:
             if self._charm.unit.is_leader():
-                relations = self._charm.model.relations.get(self._relname, [])
+                relations = self.get_relations()
             else:
                 relations = []
+
         return relations
 
-    def is_ready(self):
-        """Return if the interface is ready."""
+    def is_ready(self, relation_id=None):
+        """Return if the relation is ready."""
 
-        return False
+        return len(self.get_relations(relation_id)) > 0
 
     def set_mock(self):
         self._mock = True
@@ -227,7 +242,12 @@ class RelationSuperInterface(SuperInterface):
         else:
             return "peer"
 
-    def select(self, bucketkey):
+    def is_ready(self):
+        """Return if the relation is ready."""
+
+        return len(self.charm.model.get_relations(self.relname)) > 0
+
+    def select(self, bucketkey, relation_id=None):
         """Select and return interface to use.
 
         When determining the interface to use, the role and bucketkey
@@ -265,7 +285,7 @@ class RelationSuperInterface(SuperInterface):
 
         interface_cls = self.get_interface_class(rolekey, buckettype)
 
-        return interface_cls(self.charm, self.relname, bucketkey)
+        return interface_cls(self.charm, self.relname, bucketkey, relation_id)
 
 
 class AppConfigRelationSuperInterface(RelationSuperInterface):
