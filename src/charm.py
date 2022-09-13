@@ -18,11 +18,8 @@ from ops.framework import StoredState
 from ops.main import main
 from ops.model import ActiveStatus, WaitingStatus
 
-# load interfaces to registry
-if 1:
-    import interfaces.copydata
-else:
-    import interfaces.copydataold
+# import to load interfaces to registry
+import interfaces.copydata
 
 from hpctlib.interface import interface_registry
 from hpctlib.ops.charm.service import ServiceCharm
