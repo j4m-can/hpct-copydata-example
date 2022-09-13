@@ -17,7 +17,8 @@ from hpctlib.interface.relation import (
     RelationSuperInterface,
     UnitBucketInterface,
 )
-from hpctlib.interface.value import Boolean, Integer, Float, String, IPAddress, IPNetwork
+from hpctlib.interface.value import Boolean, Integer, Float, String
+from hpctlib.interface.value.network import IPAddress, IPNetwork
 
 
 class CopyDataRelationSuperInterface(RelationSuperInterface):
