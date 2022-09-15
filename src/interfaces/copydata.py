@@ -18,7 +18,7 @@ from hpctlib.interface.relation import (
     UnitBucketInterface,
 )
 from hpctlib.interface.value import Boolean, Integer, Float, String
-from hpctlib.interface.value.network import IPAddress, IPNetwork
+from hpctlib.interface.value.network import IPAddress, IPNetwork, PrivilegedPort
 
 
 class CopyDataRelationSuperInterface(RelationSuperInterface):
@@ -31,7 +31,7 @@ class CopyDataRelationSuperInterface(RelationSuperInterface):
         int = Integer(0)
         float = Float(0.0)
         str = String("")
-        privport = Integer(0, checker.PrivilegedPort())
+        privport = PrivilegedPort(0)
         ipaddr = IPAddress(ipaddress.IPv4Address("0.0.0.0"))
         ipnet = IPNetwork(ipaddress.IPv4Network("0.0.0.0"))
 
@@ -41,7 +41,7 @@ class CopyDataRelationSuperInterface(RelationSuperInterface):
         int = Integer(0)
         float = Float(0.0)
         str = String("")
-        privport = Integer(0, checker.PrivilegedPort())
+        privport = PrivilegedPort(0)
         ipaddr = IPAddress(ipaddress.IPv4Address("0.0.0.0"))
         ipnet = IPNetwork(ipaddress.IPv4Network("0.0.0.0"))
 
@@ -51,7 +51,7 @@ class CopyDataRelationSuperInterface(RelationSuperInterface):
         int = Integer(0)
         float = Float(0.0)
         str = String("")
-        privport = Integer(0, checker.PrivilegedPort())
+        privport = PrivilegedPort(0)
         ipaddr = IPAddress(ipaddress.IPv4Address("0.0.0.0"))
         ipnet = IPNetwork(ipaddress.IPv4Network("0.0.0.0"))
 
@@ -61,7 +61,7 @@ class CopyDataRelationSuperInterface(RelationSuperInterface):
         int = Integer(0)
         float = Float(0.0)
         str = String("")
-        privport = Integer(0, checker.PrivilegedPort())
+        privport = PrivilegedPort(0)
         ipaddr = IPAddress(ipaddress.IPv4Address("0.0.0.0"))
         ipnet = IPNetwork(ipaddress.IPv4Network("0.0.0.0"))
 
