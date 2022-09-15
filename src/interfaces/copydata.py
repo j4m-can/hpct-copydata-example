@@ -75,3 +75,7 @@ class CopyDataRelationSuperInterface(RelationSuperInterface):
 
 
 interface_registry.register("relation-copy-data", CopyDataRelationSuperInterface)
+
+if __name__ == "__main__":
+    siface = interface_registry.load("relation-copy-data", None, "copy-data")
+    siface.print_doc()
